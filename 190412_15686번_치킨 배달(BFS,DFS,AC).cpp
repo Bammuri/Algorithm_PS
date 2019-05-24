@@ -41,8 +41,9 @@ void cnt_dis(){
 				check[x][y]=1;
 				dis[x][y]=dis[a][b]+1;
 				cchick.push(make_pair(x,y));
+				
 			}
-			
+
 		}
 
 	}
@@ -59,12 +60,12 @@ void dfs(int depth,int x,int y){
 			tmp+=dis[house[i].first][house[i].second];
 		}
 		if(ans>tmp)ans=tmp;//최소값 찾기 
-		
+		return; 
 	}
 	
 	int j=y,flag=0;
 	int t_map[50][50];
-	for(int i=x;i<n;i++){+
+	for(int i=x;i<n;i++){
 		if(flag)j=0;
 		for(;j<n;j++){
 			flag=1;
