@@ -27,7 +27,7 @@ void dfs(int day, int sum){
 main(){
 	scanf("%d",&n);
 	for(int i=1;i<=n;i++)scanf("%d%d",&t[i],&p[i]);
-	printf("%d ",dp(1));
-	//dfs(1,0);
+	//printf("%d ",dp(1));
+	dfs(1,0);
 	printf("%d",ans);
 }
