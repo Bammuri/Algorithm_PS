@@ -13,7 +13,6 @@ void copymap(int(*a)[50], int(*b)[50]) {
 	for (int i = 0; i < N; i++)
 		for (int j = 0; j < N; j++)
 			a[i][j] = b[i][j];
-
 }
 
 int count() {
@@ -68,7 +67,7 @@ int main() {
 	int ans = 1987654321;
 	count_2 = 0;
 
-	//fill(&map[0][0], &map[0][0]+sizeof(map), 0);
+	fill(&map[0][0], &map[0][0]+sizeof(map)/sizeof(int), 0);
 	cin >> N >> M;
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++) {
@@ -76,7 +75,7 @@ int main() {
 			if (map[i][j] == 2) {
 				virus.push_back(make_pair(i, j));
 				count_2++;
-				inicheck[i][j] = 1;
+				inicheck[i][j] = -1;
 			}
 			else if (map[i][j] == 1) {
 				inicheck[i][j] = 1;
@@ -100,9 +99,6 @@ int main() {
 			if (permu[i]) {
 				q.push(make_pair(virus[i].first, virus[i].second));
 				check[virus[i].first][virus[i].second] = 0;
-			}
-			else {
-				check[virus[i].first][virus[i].second] = -1;
 			}
 		}
 		bfs(q, 0);
