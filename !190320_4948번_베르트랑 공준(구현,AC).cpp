@@ -10,8 +10,6 @@ void getprime(){
 		if(isnotprime[i]) continue;
 	
 		for(int j=i*2;j<=MAX_NUM*2;j+=i) isnotprime[j]=true;
-			
-	
 	}
 } 
 
@@ -25,8 +23,7 @@ main(){
 			if(isnotprime[i])continue;
 			ans++;
 		}
-		
-		
+
 		printf("%d\n",ans);
 		scanf("%d",&a);
 	}
