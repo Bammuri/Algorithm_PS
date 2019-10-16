@@ -1,7 +1,7 @@
 //2019.10.6 (일)
 //처음에 거름은 5로 시작함 첫번쨰 오류 : 5분
 //봄에 추가하고 여름에 영양분을 추가해야하는데 동시에 하다보니 두번째 오류 : 30분
-//55번줄 sort()->insert로 바꿨더니 시간초과 이던것이 정답
+//57번줄 sort()->insert로 바꿨더니 시간초과 이던것이 정답
 //vector는 insert erase 시간이 많이 걸려 list나 deque 요망
 //vector <vector<int> > a[10] 2차원 vector
 //fill memset memcpy 
