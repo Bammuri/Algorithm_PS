@@ -2,7 +2,6 @@
 #include <algorithm>
 #include <cstring>
 #include <bitset>
-
 using namespace std;
 int n, a[11],adj[11][11],c[11],sum,ans=2e9;
 int dfs(int x, int bm){
@@ -42,8 +41,10 @@ int main(){
 				break;
 			}
 		}
+
+		//모든 노드를 방문했는지 확인
 		j = 1;
-		while (j <=n&&c[j])j++;
+		while (j <= n && c[j]) j++;
 		//cout << sum << "\n";
 		if (j > n){ 
 			ans = min(ans, abs(sum));
