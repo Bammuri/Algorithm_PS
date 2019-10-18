@@ -26,6 +26,17 @@ int getmax(){
 		return maxm;
 }
 
+void printm(){
+	cout << "\n";
+	for (int i = 0; i < N; i++){
+		for (int j = 0; j < N; j++){
+			cout << check[i][j] << " ";
+		}
+		cout << "\n";
+	}
+	cout << "\n";
+}
+
 void bfs(){
 	while (!q.empty()){
 		int x = q.front().first, y = q.front().second;
@@ -40,8 +51,9 @@ void bfs(){
 			q.push(make_pair(nx, ny));
 		}
 	}
-
+	printm();
 	minm=min(minm, getmax());
+	cout << "\n" << minm << "\n";
 }
 
 void spread(){
