@@ -1,6 +1,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <functional>
 #include <algorithm>
 #include <cstring>
 using namespace std;
@@ -36,7 +37,7 @@ int solve(int y, int x, int goal){
 		if (ph >= pw){
 			int tw = 0;
 			FOR(i, ph){
-				map<int, int> fq;
+				map<int, int,greater<int>> fq;
 				vector <elem> v;
 				FOR(j, pw)if (m[i][j] != 0)fq[m[i][j]]++;
 				map <int, int>::iterator it;
