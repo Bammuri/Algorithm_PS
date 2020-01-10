@@ -1,6 +1,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <functional>
 #include <algorithm>
 #include <functional>
 #include <cstring>
