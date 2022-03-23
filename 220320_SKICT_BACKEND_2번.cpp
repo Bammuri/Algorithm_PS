@@ -28,31 +28,6 @@ priority_queue <process> waitProcesses;
 vector<string> gArr;
 
 
-void tok(int idx, string& str, process& p) {
-	switch (idx) {
-	case 0:
-		p.exeType = str;
-		break;
-	case 1:
-		p.arrTime = str;
-		break;
-	case 2:
-		p.exeTime = str;
-		break;
-	case 3:
-		p.sIdx = str;
-		break;
-	case 4:
-		p.eIdx = str;
-		break;
-	case 5:
-		p.change = str;
-		break;
-	}
-
-}
-
-
 struct runP {
 	string exeType;
 	int run;
@@ -99,7 +74,8 @@ void findProcess(runP& runProcess, vector<string>& answer)
 		else if (targetProcess.exeType == "read") {
 
 			runProcess.exeType = "read";
-			runProcess.exeTime = stoi(targetProcess.exeTime);
+			runProcess.exeTime = runProcess.exeTime > stoi(targetProcess.exeTime)
+				? runProcess.exeTime : stoi(targetProcess.exeTime);
 			int sIdx = stoi(targetProcess.sIdx);
 			int eIdx = stoi(targetProcess.eIdx);
 
@@ -109,7 +85,8 @@ void findProcess(runP& runProcess, vector<string>& answer)
 			answer.push_back(tans);
 
 			waitProcesses.pop();
-
+			if (!waitProcesses.empty())
+				findProcess(runProcess, answer);
 			runProcess.run = 1;
 		}
 
@@ -122,15 +99,13 @@ vector<string> solution(vector<string>& arr, vector<string>& processes) {
 		gArr.push_back(arr[i]);
 
 	for (string& proc : processes) {
-		istringstream ss(proc);
+		stringstream ss(proc);
 		string stringBuffer;
-		process tmp;
-		int idx = 0;
-		while (getline(ss, stringBuffer, ' ')) {
-			tok(idx, stringBuffer, tmp);
-			idx++;
-		}
-		myProcesses.push_back(tmp);
+		process p;
+
+		ss >> p.exeType >> p.arrTime >> p.exeTime >> p.sIdx >> p.eIdx >> p.change;
+	
+		myProcesses.push_back(p);
 	}
 
 	int time = 0, exeTime = 0;
@@ -141,11 +116,12 @@ vector<string> solution(vector<string>& arr, vector<string>& processes) {
 			runProcess.run = 0;
 			runProcess.exeType = "";
 		}
-
-		process nxtProc = myProcesses.front();
-		if (stoi(nxtProc.arrTime) == time) {
-			myProcesses.pop_front();
-			waitProcesses.push(nxtProc);
+		if (!myProcesses.empty()) {
+			process nxtProc = myProcesses.front();
+			if (stoi(nxtProc.arrTime) == time) {
+				myProcesses.pop_front();
+				waitProcesses.push(nxtProc);
+			}
 		}
 
 		if (!waitProcesses.empty()) {
@@ -170,9 +146,12 @@ vector<string> solution(vector<string>& arr, vector<string>& processes) {
 int main()
 {
 	vector <string> arr = { "1", "2", "4", "3", "3", "4", "1", "5" };
-	vector<string> processes = {"read 1 3 1 2", "read 2 6 4 7", "write 4 3 3 5 2", "read 5 2 2 5", "write 6 1 3 3 9", "read 9 1 0 7"};
+	vector<string> pro = { "read 1 3 1 2", "read 2 6 4 7", "write 4 3 3 5 2", "read 5 2 2 5", "write 6 1 3 3 9", "read 9 1 0 7" };
+	vector <string> arr1 = { "1", "1", "1", "1", "1", "1", "1" };
+	vector<string> pro1 ={"write 1 12 1 5 8", "read 2 3 0 2", "read 5 5 1 2", "read 7 5 2 5", "write 13 4 0 1 3", "write 19 3 3 5 5", "read 30 4 0 6", "read 32 3 1 5"};
+
 	vector <string> answer;
-	answer = solution(arr, processes);
+	answer = solution(arr1, pro1);
 	for (auto str : answer) {
 		cout << str << " ";
 	}
