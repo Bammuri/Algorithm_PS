@@ -100,7 +100,6 @@ vector<string> solution(vector<string>& arr, vector<string>& processes) {
 
 	for (string& proc : processes) {
 		stringstream ss(proc);
-		string stringBuffer;
 		process p;
 
 		ss >> p.exeType >> p.arrTime >> p.exeTime >> p.sIdx >> p.eIdx >> p.change;
