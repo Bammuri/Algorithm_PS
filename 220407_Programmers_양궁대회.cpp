@@ -7,6 +7,8 @@ using namespace std;
 vector<int> g_answer;
 int g_maxGap;
 
+
+
 bool compLastScore(vector<int>& lion) {
 	if (g_answer.empty())
 		return true;
@@ -20,6 +22,7 @@ bool compLastScore(vector<int>& lion) {
 void calScore(vector<int>& lion, vector<int>& apeche)
 {
 	int lionScore = 0, apecheScore = 0;
+
 
 	for (int i = 0; i < apeche.size(); i++) {
 		if (lion[i] > 0 || apeche[i] > 0) {
@@ -42,9 +45,11 @@ void calScore(vector<int>& lion, vector<int>& apeche)
 // 0 1 2 3 4 5 6 7 8 9 10 (11∞≥)
 void dfs(int depth, int arrowNum, vector<int>& lion, vector<int>& apeche) {
 	if (depth == 10 || arrowNum == 0) {
-		lion[depth] = arrowNum;
+		if (arrowNum > 0)
+			lion[10] = arrowNum;
 		calScore(lion, apeche);
-		lion[depth] = 0;
+		if (arrowNum > 0)
+			lion[10] = 0;
 		return;
 	}
 	//º±≈√
