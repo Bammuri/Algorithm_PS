@@ -23,11 +23,9 @@ int solution(string s) {
 				tokStr = s.substr(i,tokSize);
 				AppearCnt = 1;
 			}
-			if (i + tokSize >= s.size()) {
-				if (AppearCnt > 1) tans += to_string(AppearCnt);
-				tans += tokStr;
-			}
 		}
+		if (AppearCnt > 1) tans += to_string(AppearCnt);
+		tans += tokStr;
 		
 		if (answer > tans.length()) answer = tans.length();
 	}

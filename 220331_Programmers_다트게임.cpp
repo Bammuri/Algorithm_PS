@@ -3,7 +3,6 @@
 #include <iostream>
 #include <cmath>
 
-
 using namespace std;
 
 int solution(string dartResult) {
@@ -15,8 +14,7 @@ int solution(string dartResult) {
 	for (int i = 0; i < 3; i++) {
 		//parsing
 		int score = 0;
-		char bonus = 0;
-		char option = 0;
+		char bonus = 0, option = 0;
 
 		ss >> score;
 		bonus = ss.get();
@@ -60,7 +58,6 @@ int solution(string dartResult) {
 
 	for (auto a : answerList)
 		answer += a;
-
 
 	return answer;
 }

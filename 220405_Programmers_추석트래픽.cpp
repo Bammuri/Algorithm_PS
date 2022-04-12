@@ -26,7 +26,7 @@ int solution(vector<string> lines) {
 		int durationTime = (stod(duration) * 1000);
 
 		int startTime = endTime - durationTime + 1;
-		cout << startTime << " " << endTime << "\n";
+		//cout << startTime << " " << endTime << "\n";
 		scheduled.push_back({startTime, endTime});
 	}
 
@@ -34,7 +34,7 @@ int solution(vector<string> lines) {
 
 	for (int i = 0; i < scheduled.size();i++) {
 		int startTime = scheduled[i].endT;
-		int endTime = scheduled[i].endT + 1000;
+		int endTime = scheduled[i].endT + 999;
 		int thres = 0;
 
 		for (int k = 0; k < scheduled.size(); k++) {
