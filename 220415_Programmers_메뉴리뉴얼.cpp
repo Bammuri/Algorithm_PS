@@ -11,9 +11,9 @@ vector<string> solution(vector<string> orders, vector<int> course) {
 
 	// order 미리 정렬해두기
 	for (string& order : orders) sort(order.begin(), order.end());
-	for (auto c : course) {
+	for (int c : course) {
 		map<string, int> m;
-		for (auto order : orders) {
+		for (string order : orders) {
 			if (order.length() > c) {
 				vector<bool> comb(order.length() - c, false);
 				for (int i = 0; i < c; ++i) comb.push_back(true);
