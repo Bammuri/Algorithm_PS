@@ -14,26 +14,20 @@ struct process {
 	bool operator<(const process& rhs) const
 	{
 		if (exeType != rhs.exeType)
-		{
 			return exeType < rhs.exeType;
-		}
-
 		return arrTime > rhs.arrTime;
 	}
-
 };
 
 deque <process> myProcesses;
 priority_queue <process> waitProcesses;
 vector<string> gArr;
 
-
 struct runP {
 	string exeType;
 	int run;
 	int exeTime;
 };
-
 
 void findProcess(runP& runProcess, vector<string>& answer)
 {
@@ -52,7 +46,7 @@ void findProcess(runP& runProcess, vector<string>& answer)
 		answer.push_back(tans);
 
 		waitProcesses.pop();
-		if (!waitProcesses.empty())
+		if (!waitProcesses.empty())// 주의!!//top()을 하면 항상 검사를 해줘야한다!
 			findProcess(runProcess, answer);
 
 	}
