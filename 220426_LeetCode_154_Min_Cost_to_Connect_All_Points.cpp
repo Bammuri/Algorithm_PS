@@ -10,9 +10,12 @@ public:
 	}
 	int minCostConnectPoints(const vector<vector<int>>& points) {
 		int total = 0;
+		
 		priority_queue<pair<int, int>> pq;
 		pq.push({ 0, 0 });
+		
 		unordered_set<int> visited;
+
 		while (!pq.empty()) {
 			auto curr = pq.top();
 			pq.pop();
