@@ -17,7 +17,7 @@ public:
 		unordered_set<int> visited;
 
 		while (!pq.empty()) {
-			auto curr = pq.top();
+			pair<int,int> curr = pq.top();
 			pq.pop();
 			if (visited.find(curr.second) != visited.end())
 				continue;
